@@ -33,9 +33,9 @@ function FormDialog(props) {
     function handleAddition() {
       setOpen(false);
       setTopicToAdd('');
-      console.log(props.topics);
+      
       if(props.topics.indexOf(topicToAdd) > -1) {
-      alert('That topic name already exists!');
+        alert('That topic name already exists!');
         return;
       }
       props.addTopic(topicToAdd);
@@ -76,19 +76,18 @@ const TopicsList = (props) => {
     const classes = useStyles();
 
     return (
-        <React.Fragment>
-            <List component="nav" className={classes.root}>
-
-                {
-                    topics.map(topic =>
-                        <ListItem key={topic} button onClick={() => changeActiveTopic(topic)}>
-                            <ListItemText primary={topic} />
-                    </ListItem>
-                    )
-                }
-            </List>
-            <FormDialog addTopic={addTopic} topics={topics}/>
-        </React.Fragment>
+      <React.Fragment>
+        <List component="nav" className={classes.root}>
+          {
+            topics.map(topic =>
+              <ListItem key={topic} button onClick={() => changeActiveTopic(topic)}>
+                  <ListItemText primary={topic} />
+              </ListItem>
+            )
+          }
+        </List>
+        <FormDialog addTopic={addTopic} topics={topics}/>
+      </React.Fragment>
     );
 }
 
