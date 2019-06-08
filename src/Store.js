@@ -4,20 +4,30 @@ import io from 'socket.io-client'
 export const CTX = React.createContext();
 
 const initState = {
-        topic1: [ ],
-        topic2: [ ]
+        General: [ ],
+        Other: [ ]
 }
 
 const reducer = (state, action) => {
-    const {from, msg, topic} = action.payload;
     switch(action.type){
         case 'RECEIVE_MESSAGE':
+            const {from, msg, topic} = action.payload;
             return {
                 ...state,
                 [topic]: [
                     ...state[topic],
                     {  from, msg }
                 ]
+            }
+        case 'ADD_TOPIC':
+            const { newTopic } = action.payload;
+            if(!(newTopic in state)) {
+                return {
+                    ...state,
+                    [newTopic] : []
+                }
+            } else {
+                return state;
             }
         default:
            return state;
@@ -30,6 +40,7 @@ let socket;
 const sendChatAction = (value) => {
     socket.emit('message', value);
 }
+
 
 const user = 'user' + Math.random(100).toFixed(2)*100;
 
@@ -44,10 +55,12 @@ export default function Store(props) {
         });
     }
 
-
+    const addTopic = (newTopic) => {
+        dispatch({type: 'ADD_TOPIC', payload: {newTopic}});
+    }
 
     return(
-        <CTX.Provider value={{allChats, sendChatAction, user}}>
+        <CTX.Provider value={{allChats, addTopic, sendChatAction, user}}>
             {props.children}
         </CTX.Provider>
     )
