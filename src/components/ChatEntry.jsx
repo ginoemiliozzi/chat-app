@@ -33,7 +33,6 @@ const ChatEntry = (props) => {
     return (
         <React.Fragment>
             <TextField
-            id="standard-name"
             label="Send a message"
             className={classes.chatBox}
             value={textValue}

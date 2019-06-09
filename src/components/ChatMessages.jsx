@@ -15,7 +15,10 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         overflow: 'auto',
         maxHeight: 290,
-      }
+    },
+    userLabel: {
+        marginRight: 5,
+    }
   }));
 
 const ChatMessages = (props) => {
@@ -29,8 +32,8 @@ const ChatMessages = (props) => {
             allChats[activeTopic].map((chat, i) =>
             <React.Fragment key={i} >
                 <ListItem className={classes.flex} >
-                        <Chip label={chat.from} />
-                        <Typography variant='body1'>{chat.msg}</Typography>
+                    <Chip color='secondary' label={chat.from} className={classes.userLabel}/>
+                    <Typography variant='body1'>{chat.msg}</Typography>
                 </ListItem>
                 <Divider variant="middle" component='li'/>
             </React.Fragment>

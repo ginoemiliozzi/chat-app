@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     topicsFragment: {
         width: '30%',
         height: '300px',
-        borderRight: '3px solid lightblue'
+        borderRight: '3px solid purple'
     },
     chatFragment: {
         width: '70%',

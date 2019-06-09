@@ -19,8 +19,8 @@ const Header = (props) => {
 
     return(
         <Paper square={false} elevation={10} className={classes.root}>
-            <Typography variant="h4" component="h4">
-                Chatapp
+            <Typography variant="h4" component="h4" color='primary'>
+                ChatApp
             </Typography>
             <Typography variant="h5" component="h5">
                 {activeTopic}

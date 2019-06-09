@@ -66,11 +66,8 @@ export default function Store(props) {
         dispatch({type: 'ADD_TOPIC', payload: {newTopic}});
     }
 
-    console.log('contextstate\n' + JSON.stringify(contextState));
     const {allChats, user} = contextState;
 
-    console.log('allchats\n' + JSON.stringify(allChats));
-    console.log('user\n' + user);
     return(
         <CTX.Provider value={{allChats, user, addTopic, sendChatAction}}>
             {props.children}

@@ -71,7 +71,7 @@ function FormDialog(props) {
 
 const TopicsList = (props) => {
 
-    const {topics, addTopic, changeActiveTopic} = props;
+    const {topics, activeTopic, addTopic, changeActiveTopic} = props;
 
     const classes = useStyles();
 
@@ -80,7 +80,11 @@ const TopicsList = (props) => {
         <List component="nav" className={classes.root}>
           {
             topics.map(topic =>
-              <ListItem key={topic} button onClick={() => changeActiveTopic(topic)}>
+              <ListItem 
+                key={topic} 
+                button 
+                onClick={() => changeActiveTopic(topic)}
+              >
                   <ListItemText primary={topic} />
               </ListItem>
             )
