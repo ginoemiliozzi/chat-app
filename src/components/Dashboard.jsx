@@ -33,7 +33,7 @@ export const Dashboard = () => {
     const classes = useStyles();
 
     //Context store
-    const {allChats, sendChatAction, addTopic, user} = React.useContext(CTX);
+    const {allChats, sendChatAction, addTopic, user, changeUserName} = React.useContext(CTX);
     const topics = Object.keys(allChats);
 
     //Local state
@@ -41,7 +41,10 @@ export const Dashboard = () => {
 
     return(
         <div>
-            <Header activeTopic={activeTopic} />
+            <Header 
+                activeTopic={activeTopic} 
+                changeUserName={changeUserName}
+            />
             <div className={classes.flex}>
                 <div className={classes.topicsFragment}>
                     <TopicsList

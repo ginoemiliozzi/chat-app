@@ -8,7 +8,7 @@ const initState = {
         General: [ ],
         Other: [ ]
     },
-    user: `user${Math.random(100).toFixed(2)*100}`
+    user: `User${Math.random(100).toFixed(2)*100}`
 }
 
 const reducer = (state, action) => {
@@ -38,6 +38,12 @@ const reducer = (state, action) => {
             } else {
                 return state;
             }
+        case 'CHANGE_USERNAME':
+            const {newUserName} = action.payload;
+            return {
+                ...state,
+                user: newUserName
+            }
         default:
            return state;
     }
@@ -66,10 +72,14 @@ export default function Store(props) {
         dispatch({type: 'ADD_TOPIC', payload: {newTopic}});
     }
 
+    const changeUserName = (newUserName) => {
+        dispatch({type: 'CHANGE_USERNAME', payload: {newUserName}});
+    }
+
     const {allChats, user} = contextState;
 
     return(
-        <CTX.Provider value={{allChats, user, addTopic, sendChatAction}}>
+        <CTX.Provider value={{allChats, user, addTopic, sendChatAction, changeUserName}}>
             {props.children}
         </CTX.Provider>
     )
